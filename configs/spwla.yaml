@@ -1,0 +1,12 @@
+seed: 42
+method: M5
+data:
+  root: dataset
+  dataset: spwla
+  feature_profile: transfer_5
+  split_mode: group_well
+  test_fraction: 0.2
+  validation_size: 200
+  initial_labels: 10
+  window_size: 9
+

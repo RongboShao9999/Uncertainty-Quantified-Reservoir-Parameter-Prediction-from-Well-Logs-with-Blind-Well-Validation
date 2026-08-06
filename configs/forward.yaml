@@ -1,0 +1,30 @@
+seed: 42
+method: M5
+data:
+  root: dataset
+  dataset: forward
+  feature_profile: main_7
+  split_mode: group_well
+  test_fraction: 0.2
+  validation_size: 200
+  initial_labels: 500
+  window_size: 17
+model:
+  point_architecture: target_aware_bilstm
+  hidden_size: 96
+  layers: 3
+  deterministic_dropout: 0.06
+  mc_dropout: 0.1
+  target_head_hidden_sizes: [128, 128, 96]
+  target_dropouts: [0.04, 0.04, 0.06]
+  bounded_targets: [PHIF, SW, VSH]
+training:
+  learning_rate: 0.0007
+  point_loss: huber
+  target_loss_scaling: true
+  target_loss_weights: [3.5, 2.0, 0.8]
+  relative_loss_weight: 0.03
+  relative_loss_epsilon: 0.05
+  weight_decay: 0.0001
+  lr_patience: 4
+  lr_factor: 0.5

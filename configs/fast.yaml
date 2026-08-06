@@ -1,0 +1,46 @@
+seed: 42
+method: M5
+data:
+  root: D:/coding/BNN/DATASET
+  dataset: field
+  feature_profile: main_7
+  split_mode: group_well
+  test_fraction: 0.2
+  validation_size: 200
+  initial_labels: 10
+  window_size: 9
+  scaler: robust
+  winsorize_low: 0.01
+  winsorize_high: 0.99
+model:
+  point_architecture: auto
+  hidden_size: 64
+  layers: 2
+  deterministic_dropout: 0.2
+  mc_dropout: 0.1
+training:
+  epochs: 100
+  batch_size: 128
+  learning_rate: 0.001
+  bnn_learning_rate: 0.0005
+  early_stopping_patience: 10
+  target_loss_scaling: true
+  point_loss: huber
+  huber_delta: 1.0
+uncertainty:
+  mc_samples: 20
+  bnn_samples: 20
+  confidence: 0.95
+  calibration_objective: interval_score
+active_learning:
+  batch_budget: 5
+  rounds: 5
+  inconsistency_penalty: 2.0
+  random_fraction: 0.1
+runtime:
+  device: cuda
+  output_dir: outputs/fast
+  figure_format: pdf
+  num_workers: 2
+  pin_memory: false
+  persistent_workers: true

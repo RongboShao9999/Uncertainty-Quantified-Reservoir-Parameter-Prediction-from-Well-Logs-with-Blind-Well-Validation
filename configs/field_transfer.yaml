@@ -1,0 +1,13 @@
+seed: 42
+method: M5
+data:
+  root: D:/coding/BNN/DATASET
+  dataset: field
+  feature_profile: main_7
+  split_mode: group_well
+  test_fraction: 0.2
+  validation_size: 200
+  initial_labels: 20
+  window_size: 9
+runtime:
+  output_dir: outputs/field_transfer

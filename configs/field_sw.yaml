@@ -1,0 +1,39 @@
+seed: 42
+method: M1
+data:
+  root: D:/coding/BNN/DATASET
+  dataset: field
+  feature_profile: main_7
+  split_mode: group_well
+  test_fraction: 0.2
+  validation_size: 200
+  initial_labels: 500
+  window_size: 17
+  target_columns: [SW]
+model:
+  point_architecture: target_aware_bilstm
+  hidden_size: 96
+  layers: 3
+  deterministic_dropout: 0.08
+  mc_dropout: 0.1
+  target_head_hidden_sizes: [128]
+  target_dropouts: [0.04]
+  bounded_targets: [SW]
+training:
+  learning_rate: 0.0006
+  point_loss: huber
+  target_loss_scaling: true
+  target_loss_weights: [1.0]
+  relative_loss_weight: 0.08
+  relative_loss_epsilon: 0.05
+  reservoir_sample_weight: 1.5
+  reservoir_phif_threshold: 0.05
+  high_sw_sample_weight: 1.5
+  high_sw_threshold: 0.8
+  weight_decay: 0.0001
+  lr_patience: 4
+  lr_factor: 0.5
+runtime:
+  device: cuda
+  output_dir: outputs/bilstm_models_target_specific/field_sw
+  figure_format: pdf

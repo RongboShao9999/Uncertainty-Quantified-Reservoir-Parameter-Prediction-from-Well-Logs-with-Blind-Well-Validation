@@ -1,0 +1,52 @@
+seed: 42
+data:
+  root: D:/coding/BNN/DATASET
+  dataset: field
+  feature_profile: main_7
+  split_mode: group_well
+  test_fraction: 0.2
+  validation_size: 200
+  initial_labels: 50
+  window_size: 15
+  scaler: robust
+  winsorize_low: 0.01
+  winsorize_high: 0.99
+model:
+  point_architecture: target_aware_bilstm
+  hidden_size: 96
+  layers: 3
+  deterministic_dropout: 0.12
+  mc_dropout: 0.1
+  target_head_hidden_sizes: [96, 80, 128]
+  target_dropouts: [0.08, 0.08, 0.12]
+training:
+  epochs: 500
+  batch_size: 64
+  learning_rate: 0.0007
+  bnn_learning_rate: 0.0005
+  early_stopping_patience: 20
+  target_loss_scaling: true
+  point_loss: huber
+  huber_delta: 1.0
+  target_loss_weights: [1.6, 2.0, 1.0]
+  weight_decay: 0.0001
+  lr_patience: 4
+  lr_factor: 0.5
+uncertainty:
+  mc_samples: 50
+  bnn_samples: 50
+  confidence: 0.95
+  calibration_objective: nll
+active_learning:
+  batch_budget: 5
+  rounds: 5
+  inconsistency_penalty: 2.0
+  random_fraction: 0.1
+runtime:
+  device: cuda
+  output_dir: outputs
+  figure_format: pdf
+  num_workers: 0
+  pin_memory: false
+  persistent_workers: false
+

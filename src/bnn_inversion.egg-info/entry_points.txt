@@ -1,0 +1,2 @@
+[console_scripts]
+bnn-inversion = bnn_inversion.cli:main
